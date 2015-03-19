@@ -1,25 +1,48 @@
-# Ember-x-collapse
+# ember-x-collapse
 
-This README outlines the details of collaborating on this Ember addon.
+Plugin for ember-cli that makes Twitter Bootstrap collapse component available.
 
 ## Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+To install simply run:
 
-## Running
+```
+npm install git+ssh://git@github.com:webnuts/ember-x-collapse.git --save-dev
+ember g ember-x-collapse
+```
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+## Usage
 
-## Running Tests
+Once installed, you can use the plugin right away inside your template files:
 
-* `ember test`
-* `ember test --server`
+```
+{<div class="navbar-header">
+  {{#x-collapse tagName='button' type='button' selector='#top-menu' class="navbar-toggle" collapseOnClickLinkInsideSelector=true}}
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  {{/x-collapse}}
+</div>
+<div class="collapse navbar-collapse" id="top-menu">
+  <ul class="nav navbar-nav">
+    <li>{{#link-to "index"}}Forside{{/link-to}}</li>
+    <li>{{#link-to "categories"}}Turkalender{{/link-to}}</li>
+    <li>{{#link-to "catalog"}}Katalog{{/link-to}}</li>
+    <li>{{#link-to "pages"}}Kontakt os{{/link-to}}</li>
+  </ul>
+</div>
+```
 
-## Building
+## Configuration
 
-* `ember build`
+The plugin currently supports the following attributes:
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+### selector
+
+The CSS selector for the element which is collapsed / opened when the button is clicked.
+
+### collapseOnClickLinkInsideSelector
+
+Set this to true, if you want any link inside the collapseable content to close the collapse area on click.
+That makes sence for a menu, which should collapse, when a menuitem is clicked.
